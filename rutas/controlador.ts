@@ -1,6 +1,6 @@
 import { Router} from "../deps.ts"
 import { inicio } from "./get/inicio.ts"
-import { registro_post } from "./registro_post.ts"
+import { registro_post } from "./post/registro_post.ts"
 import { login } from "./get/login.ts"
 const router = new Router()
 
