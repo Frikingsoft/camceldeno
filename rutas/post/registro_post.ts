@@ -1,30 +1,30 @@
-import { Context } from "../../deps.ts";
-
-
-
+import { Context } from "../../deps.ts"
+import { Usuario } from "../../interfaces/usuario.ts"
+import { encriptar_contra, verificar_contra} from "../../funciones/contra.ts"
+import { crear_usuarios } from "../../funciones/bd/usuarios.ts"
 const registro_post = async (context: Context) => {
+  const { request, response } = context
   try {
-    const body = await context.request.body();
-    const data = await body.value; // Obtenemos los datos del body
+    const body = await request.body()
+    const data = await body.value // Obtenemos los datos del body
     
     if (!data) {
-      context.response.status = 400;
-      context.response.body = { message: "No se enviaron datos." };
-      return;
+      response.status = 400
+      response.body = { message: "No se enviaron datos." }
+      return
     }
-    
-    const { nombre, correo, contra } = data; // Desestructuramos los datos
-    encriptar_contra(contra)
-    context.response.status = 200;
-    context.response.body = { message: "Datos recibidos correctamente.", data };
+    let usuario:Usuario
+    let { nombre, correo, contra }:Usuario = data; // Desestructuramos los datos
+    const contra_encriptada = await encriptar_contra(contra)
+    crear_usuarios(nombre,correo,contra_encriptada)
+    response.status = 200
+    response.body = { message: "Datos recibidos correctamente.", data }
     
   } catch (error) {
-    context.response.status = 500;
-    context.response.body = { message: "Error en el servidor.", error };
+    response.status = 500
+    response.body = { message: "Error en el servidor.", error }
   }
-};
-const encriptar_contra = async (contra: string) => {
- console.log(contra)
-};
+}
 
-export { registro_post };
+
+export { registro_post }
