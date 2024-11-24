@@ -1,8 +1,9 @@
 interface Usuario{
-    id?:number,
+    id?:number
     nombre:string
     correo:string
     contra:string
+    
 }
 
 export{

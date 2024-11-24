@@ -13,7 +13,7 @@ const registro_post = async (context: Context) => {
       response.body = { message: "No se enviaron datos." }
       return
     }
-    let usuario:Usuario
+    
     let { nombre, correo, contra }:Usuario = data; // Desestructuramos los datos
     const contra_encriptada = await encriptar_contra(contra)
     crear_usuarios(nombre,correo,contra_encriptada)
