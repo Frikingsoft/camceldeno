@@ -10,9 +10,7 @@ const verificar_contra = async (contra: string, usuario: string) => {
     // Buscar el usuario en la colección
     const buscar_coleccion = await Usuarios.findOne({ nombre: usuario })
 
-    if (!buscar_coleccion) {
-        return false
-    }
+    if (!buscar_coleccion) return false
 
     // Comparar la contraseña proporcionada con la contraseña encriptada en la base de datos
     const comparar = await compare(contra, buscar_coleccion.contra)

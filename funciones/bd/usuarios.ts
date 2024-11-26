@@ -15,7 +15,7 @@ const crear_usuarios = async (nombre:string,correo:string,contra:string) => {
     }
     if(!buscar_usuario){
         await Usuarios.insertOne(guardar_usuario)
-        console.log("Usuario creado con ID:", guardar_usuario)
+        return true
     }
     
     
