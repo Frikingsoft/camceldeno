@@ -7,12 +7,12 @@ const validar_correo = (texto) => {
     return regex.test(texto)
 };
 const validar_nombre =(texto)=>{
-    return texto.length >= 8
+    return texto.length >= 6
 }
 const validar_contra = (texto) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/
     return regex.test(texto)
-};
+}
 const datos_invalidos =(response)=>{
     response.status = 400
     response.body = { message: "No se enviaron datos." }

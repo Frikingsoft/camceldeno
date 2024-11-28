@@ -1,8 +1,8 @@
 interface Usuario{
     id?:number
-    nombre:string
-    correo:string
-    contra:string
+    usuario:string
+    email:string
+    password:string
     
 }
 
